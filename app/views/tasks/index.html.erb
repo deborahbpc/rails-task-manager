@@ -2,8 +2,15 @@
 
 <% @tasks.each do |task| %>
   <span><input type="checkbox" <%= 'checked' if task.completed %>><%= link_to(task.title, task_path(task)) %></span>
-  <span><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <span><%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <i class="far fa-trash-alt"></i>
+  <% end %>
+  </span>
   <br>
 <% end %>
 
-<%= link_to '+ Add new task', new_task_path %>
+<%= link_to new_task_path do %>
+<i class="fas fa-plus">Add new task</i>
+<% end %>
+
+
